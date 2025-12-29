@@ -80,7 +80,7 @@ TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/a5lte/ril/
+BOARD_RIL_CLASS := ../../../device/samsung/a5lte/ril
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth

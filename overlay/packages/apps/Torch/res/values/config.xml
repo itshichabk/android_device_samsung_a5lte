@@ -18,8 +18,7 @@
 
 <resources>
     <!-- Full path to the sysfs toggle -->
-    <string name="flashDevice">/sys/class/camera/flash/rear_flash</string>
-
+    <string name="flashDevice">/sys/class/leds/torch-sec1/brightness</string>
     <!-- Lowest setting -->
     <integer name="valueOn">1</integer>
     <!-- Middle setting -->

@@ -80,15 +80,35 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    audio.primary.msm8916 \
     audio_policy.msm8916 \
     libaudio-resampler \
     tinymix \
-    libtinycompress \
-    libaudioroute
+    libtinycompress
+    #libaudioroute
+
+# Audio calibration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/audio/General_cal.acdb:system/etc/General_cal.acdb \
+    $(LOCAL_PATH)/audio/Global_cal.acdb:system/etc/Global_cal.acdb \
+    $(LOCAL_PATH)/audio/Handset_cal.acdb:system/etc/Handset_cal.acdb \
+    $(LOCAL_PATH)/audio/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
+    $(LOCAL_PATH)/audio/Headset_cal.acdb:system/etc/Headset_cal.acdb \
+    $(LOCAL_PATH)/audio/Speaker_cal.acdb:system/etc/Speaker_cal.acdb
+
+# set acdb path
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.calfile0=/etc/Bluetooth_cal.acdb \
+    persist.audio.calfile1=/etc/General_cal.acdb \
+    persist.audio.calfile2=/etc/Global_cal.acdb \
+    persist.audio.calfile3=/etc/Handset_cal.acdb \
+    persist.audio.calfile4=/etc/Hdmi_cal.acdb \
+    persist.audio.calfile5=/etc/Headset_cal.acdb \
+    persist.audio.calfile6=/etc/Speaker_cal.acdb
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Filesystem
@@ -153,7 +173,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
 
 # Display
 PRODUCT_PACKAGES += \
@@ -168,6 +190,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
 	$(LOCAL_PATH)/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
 	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+
+# KEYPAD
+PRODUCT_PACKAGES += \
+    synaptics_rmi4_i2c.kl \
+    synaptics_dsx.kl
 
 # Connectivity Engine support
 PRODUCT_PACKAGES += \

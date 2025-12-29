@@ -2,6 +2,7 @@
 
 VENDOR=samsung
 DEVICE=a5lte
+STOCK_ROM_DIR=~/stock_a5_system
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
