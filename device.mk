@@ -77,6 +77,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
+    audio.primary.msm8916 \
     audio.usb.default \
     audio.r_submix.default \
     audio_policy.msm8916 \
@@ -84,6 +85,9 @@ PRODUCT_PACKAGES += \
     tinymix \
     libtinycompress
     #libaudioroute
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/libaudioroute.so:system/lib/libaudioroute.so
 
 # Audio calibration
 PRODUCT_COPY_FILES += \
@@ -105,6 +109,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.calfile5=/etc/Headset_cal.acdb \
     persist.audio.calfile6=/etc/Speaker_cal.acdb
 
+# Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio/audio_effects.conf:system/etc/audio_effects.conf \
@@ -148,6 +153,11 @@ PRODUCT_BOOT_JARS += \
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8916 \
+    libmm-qcamera
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -213,6 +223,9 @@ PRODUCT_PACKAGES += \
     libebtc
 
 # RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=SamsungA5FRIL
+
 PRODUCT_PACKAGES += \
 	libxml2
 
